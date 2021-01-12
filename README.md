@@ -1,4 +1,4 @@
 # Physics lab Android
 
-#Команда авторов:
+Команда авторов:
 [Ворожцов Михаил](https://github.com/MishkaV)
