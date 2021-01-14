@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
+import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.mainScreen.MainFragment
 
 class RegistrationScreen5 : Fragment() {
@@ -63,10 +64,12 @@ class RegistrationScreen5 : Fragment() {
         initTagView()
 
         val mainFragment = MainFragment()
+        val activeWorksScreen = ActiveWorksScreen()
         val buttonNext = view.findViewById<MaterialButton>(R.id.registrationButtonFrag5)
 
         buttonNext.setOnClickListener() {
             makeCurrentFragmentMainWindow(mainFragment, "mainFragment")
+            makeCurrentFragmentInMainWindow(activeWorksScreen, "activeWorksScreen")
         }
 
     }
@@ -89,6 +92,14 @@ class RegistrationScreen5 : Fragment() {
     private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragmnet_layout, fragment)
+            addToBackStack(name.toString())
+            commit()
+        }
+    }
+
+    private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.main_fragment, fragment)
             addToBackStack(name.toString())
             commit()
         }
