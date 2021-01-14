@@ -26,7 +26,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/rubik_regular"
         android:gravity="center_vertical"
-        android:text="А как же мы поймем, что это вы?"
+        android:text="Данные для входа"
         android:textSize="32sp" />
 
     <com.google.android.material.textfield.TextInputLayout

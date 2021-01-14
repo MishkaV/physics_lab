@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 
 import com.example.physics_lab.R
+import com.google.android.material.button.MaterialButton
+import view.fragments.mainScreen.MainFragment
 
 class RegistrationScreen5 : Fragment() {
     companion object {
@@ -59,6 +61,14 @@ class RegistrationScreen5 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTagView()
+
+        val mainFragment = MainFragment()
+        val buttonNext = view.findViewById<MaterialButton>(R.id.registrationButtonFrag5)
+
+        buttonNext.setOnClickListener() {
+            makeCurrentFragmentMainWindow(mainFragment, "mainFragment")
+        }
+
     }
 
     private fun initTagView() {
@@ -75,4 +85,12 @@ class RegistrationScreen5 : Fragment() {
 
     private fun getVectorDrawable(id: Int): Drawable? =
         ContextCompat.getDrawable(requireContext(), id)
+
+    private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.main_fragmnet_layout, fragment)
+            addToBackStack(name.toString())
+            commit()
+        }
+    }
 }
