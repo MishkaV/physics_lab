@@ -1,15 +1,22 @@
 package view.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.physics_lab.R
+import com.yalantis.guillotine.animation.GuillotineAnimation.GuillotineBuilder
 import view.fragments.loginScreen.LoginScreen
+import view.fragments.mainScreen.MainFragment
 import view.fragments.registrationScreen.RegistrationScreen1
 import view.fragments.startScreen.StartScreen
 
+
 class MainActivity : AppCompatActivity() {
+    private val RIPPLE_DURATION: Long = 250
     lateinit var startScreen: StartScreen
     lateinit var loginScreen: LoginScreen
     lateinit var registrationScreen: RegistrationScreen1
