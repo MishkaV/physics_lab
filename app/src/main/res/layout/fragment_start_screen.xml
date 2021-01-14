@@ -11,7 +11,16 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/background_start"/>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMainWhite"
+        android:fontFamily="@font/rubik_bold"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="48sp"
+        android:text="Виртуальные лабораторные работы по физике"
+        />
     <LinearLayout
         android:id="@+id/frameButtons"
         android:background="@color/colorMainWhite"
@@ -33,7 +42,8 @@
             android:backgroundTint="@color/colorMainWhite"
             app:strokeColor="@color/colorMainBlue"
             android:textColor="@color/colorMainBlue"
-            android:text="Войти"/>
+            android:text="Войти"
+            android:fontFamily="@font/rubik_regular"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_registration"
@@ -48,6 +58,7 @@
             app:strokeColor="@color/colorMainBlue"
             android:textColor="@color/colorMainWhite"
             android:text="Регистрация"
+            android:fontFamily="@font/rubik_regular"
             />
     </LinearLayout>
 </RelativeLayout>

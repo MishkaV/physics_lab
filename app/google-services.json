@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "683515305127",
+    "project_id": "physics-lab-63987",
+    "storage_bucket": "physics-lab-63987.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683515305127:android:4469aeefb5dfcc4fa48f82",
+        "android_client_info": {
+          "package_name": "com.example.physics_lab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683515305127-eaie2ku3o1dsj7oksu69s3smmcfe4ksb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.physics_lab",
+            "certificate_hash": "65bd09d561743950583c62c48b6c79f94567311e"
+          }
+        },
+        {
+          "client_id": "683515305127-ipvhc8qrctddplpjgrdbqtjq2vc04554.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBthih5aAfF2Drkv7001H_NirxRF9kOixE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683515305127-ipvhc8qrctddplpjgrdbqtjq2vc04554.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
