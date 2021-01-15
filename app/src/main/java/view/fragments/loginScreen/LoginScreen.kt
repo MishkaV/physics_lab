@@ -12,6 +12,8 @@ import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login_screen.*
+import view.activities.currentUserData
+import view.activities.firebaseRequest
 import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.loginScreen.resetPasswordScreen.ResetPasswordScreen
 import view.fragments.mainScreen.MainFragment
@@ -69,6 +71,9 @@ class LoginScreen : Fragment() {
                         ).show()
                         return@addOnCompleteListener
                     }
+                    currentUserData.email = email
+                    currentUserData.password = password
+                    firebaseRequest.setCurrentUser()
                     makeCurrentFragmentMainWindow(mainFragment, "mainFragment")
                     makeCurrentFragmentInMainWindow(activeWorksScreen, "activeWorksScreen")
                     Log.d("AUTHORIZATION", "Successfull!")
