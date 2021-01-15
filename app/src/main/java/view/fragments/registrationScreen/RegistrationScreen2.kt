@@ -8,8 +8,12 @@ import android.view.ViewGroup
 
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
+import kotlinx.android.synthetic.main.fragment_registration_screen.*
+import kotlinx.android.synthetic.main.fragment_registration_screen2.*
+import view.activities.currentUserData
 
 class RegistrationScreen2 : Fragment() {
+    val registrationScreen3 = RegistrationScreen3()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +30,10 @@ class RegistrationScreen2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val registrationScreen3 = RegistrationScreen3()
         val buttonNext = view.findViewById<MaterialButton>(R.id.registrationButtonFrag2)
 
         buttonNext.setOnClickListener() {
-            makeCurrentFragmentMainWindow(registrationScreen3, "registrationScreen3")
+            getMailPassword()
         }
     }
 
@@ -39,6 +42,21 @@ class RegistrationScreen2 : Fragment() {
             replace(R.id.main_fragmnet_layout, fragment)
             addToBackStack(name.toString())
             commit()
+        }
+    }
+
+    private fun getMailPassword() {
+        mailEditLayoutReg.error = null
+        passwordEditLayoutReg.error = null
+        if (!(mailEditTextReg?.text.toString() == "" || passwordEditTextReg?.text.toString() == "")) {
+            currentUserData.email = mailEditTextReg?.text.toString()
+            currentUserData.password = passwordEditTextReg?.text.toString()
+
+            makeCurrentFragmentMainWindow(registrationScreen3, "registrationScreen3")
+        } else if (mailEditTextReg?.text.toString() == "") {
+            mailEditLayoutReg.error = "Введите почту"
+        } else {
+            passwordEditLayoutReg.error = "Введите пароль"
         }
     }
 }

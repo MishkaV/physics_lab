@@ -9,11 +9,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.physics_lab.R
 import com.yalantis.guillotine.animation.GuillotineAnimation.GuillotineBuilder
+import model.CurrentUserData
 import view.fragments.loginScreen.LoginScreen
 import view.fragments.mainScreen.MainFragment
 import view.fragments.registrationScreen.RegistrationScreen1
 import view.fragments.startScreen.StartScreen
 
+var currentUserData = CurrentUserData()
 
 class MainActivity : AppCompatActivity() {
     private val RIPPLE_DURATION: Long = 250
@@ -47,4 +49,6 @@ class MainActivity : AppCompatActivity() {
             R.id.button_registration -> makeCurrentFragmentMainWindow(registrationScreen, "registrationScreen")
         }
     }
+
+
 }

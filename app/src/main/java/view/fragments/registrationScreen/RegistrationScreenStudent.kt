@@ -1,15 +1,21 @@
 package view.fragments.registrationScreen
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
+import android.widget.Toast
 
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
+import view.activities.currentUserData
 
 class RegistrationScreenStudent : Fragment() {
+    val registrationScreen5 = RegistrationScreen5()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +33,14 @@ class RegistrationScreenStudent : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val registrationScreen5 = RegistrationScreen5()
         val buttonNext = view.findViewById<MaterialButton>(R.id.registrationButtonFragStudent)
+        val spinnerSchool = view.findViewById<Spinner>(R.id.spinnerSchool)
+        val spinnerClass = view.findViewById<Spinner>(R.id.spinnerClass)
 
         buttonNext.setOnClickListener() {
-            makeCurrentFragmentMainWindow(registrationScreen5, "registrationScreen5")
+            currentUserData.place_work = spinnerSchool.selectedItem.toString()
+            currentUserData.grade_level = spinnerClass.selectedItem.toString()
+            registrationRequest()
         }
     }
 
@@ -40,6 +49,26 @@ class RegistrationScreenStudent : Fragment() {
             replace(R.id.main_fragmnet_layout, fragment)
             addToBackStack(name.toString())
             commit()
+        }
+    }
+
+    private fun registrationRequest() {
+        if (currentUserData.email != null && currentUserData.password != null) {
+            FirebaseAuth
+                .getInstance()
+                .createUserWithEmailAndPassword(currentUserData.email!!, currentUserData.password!!)
+                .addOnCompleteListener {
+                    if (!it.isSuccessful) {
+                        Toast.makeText(
+                            context,
+                            "Извините, но такой пользователь уже существует",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@addOnCompleteListener
+                    }
+                    makeCurrentFragmentMainWindow(registrationScreen5, "registrationScreen5")
+                    Log.d("registrationRequest", "Successfull!")
+                }
         }
     }
 }
