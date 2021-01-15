@@ -13,6 +13,7 @@ import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import view.activities.currentUserData
+import view.activities.firebaseRequest
 
 class RegistrationScreenTeacher : Fragment() {
     val registrationScreen5 = RegistrationScreen5()
@@ -64,6 +65,7 @@ class RegistrationScreenTeacher : Fragment() {
                         return@addOnCompleteListener
                     }
                     makeCurrentFragmentMainWindow(registrationScreen5, "registrationScreen5")
+                    firebaseRequest.createNewUser()
                     Log.d("registrationRequest", "Successfull!")
                 }
         }
