@@ -13,11 +13,13 @@ import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login_screen.*
 import view.fragments.activeWorksScreen.ActiveWorksScreen
+import view.fragments.loginScreen.resetPasswordScreen.ResetPasswordScreen
 import view.fragments.mainScreen.MainFragment
 
 class LoginScreen : Fragment() {
     val mainFragment = MainFragment()
     val activeWorksScreen = ActiveWorksScreen()
+    val resetPasswordScreen = ResetPasswordScreen()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +37,13 @@ class LoginScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val buttonLogin = view.findViewById<MaterialButton>(R.id.loginButtonFrag)
+        val buttonReset = view.findViewById<MaterialButton>(R.id.resetButton)
 
         buttonLogin.setOnClickListener() {
             authorization()
+        }
+        buttonReset.setOnClickListener() {
+            makeCurrentFragmentMainWindow(resetPasswordScreen, "resetPasswordScreen")
         }
     }
 
