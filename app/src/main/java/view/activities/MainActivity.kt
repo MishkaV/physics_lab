@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment
 import com.example.physics_lab.R
 import com.yalantis.guillotine.animation.GuillotineAnimation.GuillotineBuilder
 import model.CurrentUserData
+import model.FirebaseRequest
 import view.fragments.loginScreen.LoginScreen
 import view.fragments.mainScreen.MainFragment
 import view.fragments.registrationScreen.RegistrationScreen1
 import view.fragments.startScreen.StartScreen
 
 var currentUserData = CurrentUserData()
+val firebaseRequest = FirebaseRequest()
 
 class MainActivity : AppCompatActivity() {
     private val RIPPLE_DURATION: Long = 250
