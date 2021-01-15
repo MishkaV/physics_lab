@@ -11,6 +11,7 @@ import android.widget.RadioGroup
 
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
+import view.activities.currentUserData
 
 class RegistrationScreen3 : Fragment() {
 
@@ -37,10 +38,13 @@ class RegistrationScreen3 : Fragment() {
 
         buttonNext.setOnClickListener() {
             val selected = view.findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
-            if (selected.text == "Учитель")
+            if (selected.text == "Учитель") {
                 makeCurrentFragmentMainWindow(registrationScreenTeacher, "registrationScreenTeacher")
-            else
+                currentUserData.type = "Учитель"
+            } else {
                 makeCurrentFragmentMainWindow(registrationScreenStudent, "registrationScreenStudent")
+                currentUserData.type = "Ученик"
+            }
         }
     }
 
