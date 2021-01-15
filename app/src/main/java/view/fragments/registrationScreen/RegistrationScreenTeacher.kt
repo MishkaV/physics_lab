@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
 
-class RegistrationScreen4 : Fragment() {
+class RegistrationScreenTeacher : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +20,14 @@ class RegistrationScreen4 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration_screen4, container, false)
+        return inflater.inflate(R.layout.fragment_registration_screen4_teacher, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val registrationScreen5 = RegistrationScreen5()
-        val buttonNext = view.findViewById<MaterialButton>(R.id.registrationButtonFrag4)
+        val buttonNext = view.findViewById<MaterialButton>(R.id.registrationButtonFragTeacher)
 
         buttonNext.setOnClickListener() {
             makeCurrentFragmentMainWindow(registrationScreen5, "registrationScreen5")

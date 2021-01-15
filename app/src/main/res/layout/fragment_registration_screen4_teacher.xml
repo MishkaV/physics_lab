@@ -1,9 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="view.fragments.registrationScreen.RegistrationScreen3">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="view.fragments.registrationScreen.RegistrationScreenTeacher">
+
 
     <TextView
         android:id="@+id/registrationText"
@@ -26,47 +27,27 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/rubik_regular"
         android:gravity="center_vertical"
-        android:text="Кто же вы?"
+        android:text="А где работаете?"
         android:textSize="32sp" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registrationWelcomeText"
+        android:layout_below="@id/registrationWelcomeText"
+        android:entries="@array/schools"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:checkedButton="@id/radioButtonTeacher">
-
-        <RadioButton
-            android:id="@+id/radioButtonTeacher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_regular"
-            android:text="Учитель"
-            android:textSize="24sp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonStudent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_regular"
-            android:text="Ученик"
-            android:textSize="24sp" />
-
-    </RadioGroup>
-
-
-
+        />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/registrationButtonFrag3"
+        android:id="@+id/registrationButtonFragTeacher"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
@@ -79,5 +60,4 @@
         app:cornerRadius="15dp"
         app:strokeColor="@color/colorMainBlue"
         app:strokeWidth="2dp" />
-
 </RelativeLayout>
