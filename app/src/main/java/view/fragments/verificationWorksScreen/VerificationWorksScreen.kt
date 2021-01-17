@@ -35,9 +35,9 @@ class VerificationWorksScreen : Fragment() {
         val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = createAdapter()
+        //recyclerView.adapter = createAdapter()
     }
-
+/*
     private fun createAdapter(): RecyclerView.Adapter<*>? {
         val element = LabData()
         element.name = "Работа 4"
@@ -47,6 +47,8 @@ class VerificationWorksScreen : Fragment() {
         for(i in 1..20){
             list.add(element)
         }
-        return ActiveWorkAdapter(list)
+        return fragmentManager?.let { ActiveWorkAdapter(list, it) }
     }
+
+ */
 }

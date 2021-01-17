@@ -1,10 +1,13 @@
 package model
 
 import android.util.Log
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import presenter.activeWorkAdapter.ActiveWorkAdapter
 import view.activities.currentUserData
 import java.lang.Exception
 
@@ -62,7 +65,32 @@ class FirebaseRequest {
                     }
                 }
             })
+    }
 
-
+    fun setAdapter(recyclerView: RecyclerView, fragmentManager: FragmentManager?) {
+        val storage = FirebaseFirestore
+                .getInstance()
+                .document("Users/${currentUserData.email}")
+        storage.get()
+                .addOnSuccessListener(object : OnSuccessListener<DocumentSnapshot> {
+                    override fun onSuccess(p0: DocumentSnapshot?) {
+                        if (p0 != null) {
+                            if (p0.exists()) {
+                                Log.d("SET_CURRENT_USER", "Success upload")
+                                currentUserData.name = p0.get("email") as String
+                                currentUserData.surname = p0.get("patronymic") as String
+                                currentUserData.patronymic = p0.get("patronymic") as String
+                                currentUserData.type = p0.get("type") as String
+                                currentUserData.place_work = p0.get("place_work") as String
+                                val gradel_level = p0.get("grade_level") as String
+                                if (gradel_level != "NONE")
+                                    currentUserData.grade_level = gradel_level
+                                else
+                                    currentUserData.grade_level = null
+                                recyclerView.adapter = fragmentManager?.let { ActiveWorkAdapter(currentUserData, it) }
+                            }
+                        }
+                    }
+                })
     }
 }

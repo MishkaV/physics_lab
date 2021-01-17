@@ -35,10 +35,10 @@ class FinishWorksScreen : Fragment() {
         val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = createAdapter()
+       // recyclerView.adapter = createAdapter()
     }
 
-    private fun createAdapter(): RecyclerView.Adapter<*>? {
+    /*private fun createAdapter(): RecyclerView.Adapter<*>? {
         val element = LabData()
         element.name = "Работа 4"
         element.deadline = "12:12:2000"
@@ -47,7 +47,9 @@ class FinishWorksScreen : Fragment() {
         for(i in 1..20){
             list.add(element)
         }
-        return ActiveWorkAdapter(list)
+        return fragmentManager?.let { ActiveWorkAdapter(list, it) }
     }
 
+
+     */
 }
