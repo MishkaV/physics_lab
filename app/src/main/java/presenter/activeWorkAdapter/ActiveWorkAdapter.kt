@@ -40,7 +40,8 @@ class ActiveWorkAdapter(var currentUserData: CurrentUserData, var fragmentManage
     override fun onBindViewHolder(holder: ActiveWorkHolder, position: Int) {
         holder.itemView.labImage.setImageResource(R.drawable.background_start)
         holder.itemView.labName.text = labsName[position]
-        holder.itemView.labDeadline.text = "Дедлайн сдачи: " + labsName[position]
+        holder.itemView.labTheme.text = labsTheme[position]
+        holder.itemView.labDeadline.text = "Дедлайн сдачи: " + "20.12.2021"
     }
     class ActiveWorkHolder(view: View, fragmentManager: FragmentManager) : RecyclerView.ViewHolder(view) {
         init{
