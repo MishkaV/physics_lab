@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="22dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="720dp"
+            android:orientation="vertical"
+            android:background="@drawable/background_descr">
+
+            <TextView
+                android:id="@+id/descrTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/descrDescrp"
+                android:fontFamily="@font/rubik_black"
+                android:textColor="@color/colorMainWhite"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                />
+            <TextView
+                android:id="@+id/descrDescrp"
+                android:layout_width="match_parent"
+                android:layout_height="520dp"
+                android:fontFamily="@font/rubik_black"
+                android:textSize="25dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorMainWhite"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

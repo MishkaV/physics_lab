@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="194dp"
         android:scaleType="centerCrop"
-        android:transitionName="kek"
+        android:transitionName="imageViewTran"
         />
 
     <LinearLayout

@@ -39,17 +39,5 @@ class ActiveWorksScreen : Fragment() {
         firebaseRequest.setAdapter(recyclerView, fragmentManager)
     }
 
-    /*private fun createAdapter(): RecyclerView.Adapter<*>? {
-        val element = LabData()
-        element.name = "Работа 4"
-        element.deadline = "12:12:2000"
-        element.image = R.drawable.background_start
-        val list = arrayListOf<LabData>()
-        for(i in 1..20){
-            list.add(element)
-        }
-        return fragmentManager?.let { ActiveWorkAdapter(list, it) }
-    }
 
-     */
 }
