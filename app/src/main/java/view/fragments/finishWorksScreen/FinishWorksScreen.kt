@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.physics_lab.R
 import model.LabData
 import presenter.activeWorkAdapter.ActiveWorkAdapter
+import view.activities.firebaseRequest
 
 class FinishWorksScreen : Fragment() {
 
@@ -35,19 +36,7 @@ class FinishWorksScreen : Fragment() {
         val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = createAdapter()
-    }
-
-    private fun createAdapter(): RecyclerView.Adapter<*>? {
-        val element = LabData()
-        element.name = "Работа 4"
-        element.deadline = "12:12:2000"
-        element.image = R.drawable.background_start
-        val list = arrayListOf<LabData>()
-        for(i in 1..20){
-            list.add(element)
-        }
-        return ActiveWorkAdapter(list)
+        firebaseRequest.setAdapter(recyclerView, fragmentManager)
     }
 
 }
