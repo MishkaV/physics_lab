@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.physics_lab.R
+import com.skydoves.transformationlayout.onTransformationStartContainer
 import com.yalantis.guillotine.animation.GuillotineAnimation.GuillotineBuilder
 import model.CurrentUserData
 import model.DataAboutLabs

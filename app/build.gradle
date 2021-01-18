@@ -50,4 +50,6 @@ dependencies {
 
     implementation 'no.danielzeller.blurbehindlib:blurbehindlib:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation "com.github.skydoves:transformationlayout:1.0.7"
+    implementation 'com.airbnb.android:lottie:3.6.0'
 }
