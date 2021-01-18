@@ -1,19 +1,20 @@
 package view.fragments.meScreen
 
-import android.app.Activity
-import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
 import com.example.physics_lab.R
-import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.fragment_description_screen.*
 import kotlinx.android.synthetic.main.fragment_me_screen.*
+import presenter.activeWorkAdapter.descriptionAdapter.DescriptionAdapter
+import presenter.activeWorkAdapter.descriptionAdapter.Model
+import presenter.activeWorkAdapter.meAdapter.MeAdapter
 import view.activities.currentUserData
+
 
 class MeScreen : Fragment() {
 
@@ -21,6 +22,7 @@ class MeScreen : Fragment() {
         super.onCreate(savedInstanceState)
         Log.d("ME_SCREEN_CHEKER", currentUserData.name.toString())
         Log.d("ME_SCREEN_CHEKER", currentUserData.grade_level.toString())
+
     }
 
     override fun onCreateView(
@@ -33,23 +35,27 @@ class MeScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val profileImage = view.findViewById<CircleImageView>(R.id.profile_image)
+        val list = ArrayList<Model>()
+        meHello.text = "Здравствуйте, " + currentUserData.name + "!"
+        list.add(
+            Model(
+                "О себе:",
+                "Имя: ${currentUserData.name}\n\n" +
+                        "Фамилия: ${currentUserData.surname}\n\n" +
+                        "Отчество: ${currentUserData.patronymic}"
+            )
+        )
 
-        profileImage.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, 0    )
-        }
+        list.add(
+            Model(
+                "Где учусь:",
+                "Класс: ${currentUserData.grade_level}\n\n" +
+                        "Школа: ${currentUserData.place_work}\n"
+            )
+        )
+
+        viewPagerMe.adapter = context?.let { MeAdapter(list, it) }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null){
-            Log.d("ME_SCREEN_CHEKER", "Success selected photo")
-
-            val bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, data.data)
-            profile_image.setImageBitmap(bitmap)
-        }
-    }
 }

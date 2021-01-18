@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.physics_lab.R
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_me_screen.*
 import model.LabData
 import presenter.activeWorkAdapter.ActiveWorkAdapter
 import view.activities.firebaseRequest
@@ -37,6 +40,7 @@ class ActiveWorksScreen : Fragment() {
 
         recyclerView.layoutManager = layoutManager
         firebaseRequest.setAdapter(recyclerView, fragmentManager)
+
     }
 
 
