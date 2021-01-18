@@ -39,6 +39,25 @@ class FirebaseRequest {
                     Log.d("FIRECLOUD_REQUEST", p0.toString())
                 }
             })
+
+        if (currentUserData.grade_level != "NONE") {
+            map["active_works"] = ArrayList<String>()
+            map["verification_works"] = ArrayList<String>()
+            map["finish_works"] = ArrayList<String>()
+            storage.collection("Students/${currentUserData.place_work.toString()}/${currentUserData.grade_level.toString()}")
+                .document(currentUserData.email.toString())
+                .set(map)
+                .addOnSuccessListener(object : OnSuccessListener<Void> {
+                    override fun onSuccess(p0: Void?) {
+                        Log.d("FIRECLOUD_REQUEST", "Success")
+                    }
+                })
+                .addOnFailureListener(object : OnFailureListener {
+                    override fun onFailure(p0: Exception) {
+                        Log.d("FIRECLOUD_REQUEST", p0.toString())
+                    }
+                })
+        }
     }
 
     fun setCurrentUser() {
@@ -51,13 +70,13 @@ class FirebaseRequest {
                     if (p0 != null) {
                         if (p0.exists()) {
                             Log.d("SET_CURRENT_USER", "Success upload")
-                            currentUserData.name = p0.get("email") as String
-                            currentUserData.surname = p0.get("patronymic") as String
+                            currentUserData.name = p0.get("name") as String
+                            currentUserData.surname = p0.get("surname") as String
                             currentUserData.patronymic = p0.get("patronymic") as String
                             currentUserData.type = p0.get("type") as String
                             currentUserData.place_work = p0.get("place_work") as String
-                            val gradel_level = p0.get("email") as String
-                            if (gradel_level == "NONE")
+                            val gradel_level = p0.get("grade_level") as String
+                            if (gradel_level != "NONE")
                                 currentUserData.grade_level = gradel_level
                             else
                                 currentUserData.grade_level = null
@@ -77,8 +96,8 @@ class FirebaseRequest {
                         if (p0 != null) {
                             if (p0.exists()) {
                                 Log.d("SET_CURRENT_USER", "Success upload")
-                                currentUserData.name = p0.get("email") as String
-                                currentUserData.surname = p0.get("patronymic") as String
+                                currentUserData.name = p0.get("name") as String
+                                currentUserData.surname = p0.get("surname") as String
                                 currentUserData.patronymic = p0.get("patronymic") as String
                                 currentUserData.type = p0.get("type") as String
                                 currentUserData.place_work = p0.get("place_work") as String
