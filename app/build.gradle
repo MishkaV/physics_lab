@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.physics_lab"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -48,4 +48,6 @@ dependencies {
     implementation 'com.github.magic-goop:tag-sphere:1.0.0'
     implementation 'com.github.Yalantis:GuillotineMenu-Android:1.2'
 
+    implementation 'no.danielzeller.blurbehindlib:blurbehindlib:1.0.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

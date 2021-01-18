@@ -8,11 +8,10 @@ import android.view.ViewGroup
 
 import com.example.physics_lab.R
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.finishWorksScreen.FinishWorksScreen
-import view.fragments.statisticsScreen.StatisticsScreen
+import view.fragments.meScreen.MeScreen
 import view.fragments.verificationWorksScreen.VerificationWorksScreen
 
 class MainFragment : Fragment() {
@@ -36,7 +35,7 @@ class MainFragment : Fragment() {
             val activeWorksScreen = ActiveWorksScreen()
             val finishWorksScreen = FinishWorksScreen()
             val verificationWorksScreen = VerificationWorksScreen()
-            val statisticsScreen = StatisticsScreen()
+            val meScreen = MeScreen()
 
             bottomBar.onItemSelectedListener = { view, menuItem ->
                 when (menuItem.itemId) {
@@ -49,8 +48,8 @@ class MainFragment : Fragment() {
                     R.id.ic_on_verification_works -> {
                         makeCurrentFragmentInMainWindow(verificationWorksScreen, "verificationWorksScreen")
                     }
-                    R.id.ic_statistics -> {
-                        makeCurrentFragmentInMainWindow(statisticsScreen, "statisticsScreen")
+                    R.id.ic_user -> {
+                        makeCurrentFragmentInMainWindow(meScreen, "meScreen")
                     }
                 }
                 true
