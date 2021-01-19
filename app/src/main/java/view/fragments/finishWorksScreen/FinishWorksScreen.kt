@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.physics_lab.R
-import model.LabData
-import presenter.activeWorkAdapter.ActiveWorkAdapter
+import view.activities.currentUserData
 import view.activities.firebaseRequest
+import view.fragments.finishWorksScreen.notReadyScreenFinish.NotReadyScreenFinish
 
 class FinishWorksScreen : Fragment() {
 
@@ -29,14 +29,27 @@ class FinishWorksScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var orientation = RecyclerView.VERTICAL
-        var spanCount = 1
+        if (currentUserData.finish_works == null || currentUserData.finish_works!!.size == 0) {
+            val notReadyScreenFinish = NotReadyScreenFinish()
+            makeCurrentFragmentInMainWindow(notReadyScreenFinish, "notReadyScreenFinish")
+        }
+        else {
+            var orientation = RecyclerView.VERTICAL
+            var spanCount = 1
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewFinishWork)
-        val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewFinishWork)
+            val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
 
-        recyclerView.layoutManager = layoutManager
-        firebaseRequest.setAdapter(recyclerView, fragmentManager)
+            recyclerView.layoutManager = layoutManager
+            firebaseRequest.setAdapter(recyclerView, fragmentManager)
+        }
     }
 
+    private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.main_fragment, fragment)
+            addToBackStack(name.toString())
+            commit()
+        }
+    }
 }

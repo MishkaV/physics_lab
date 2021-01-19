@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
+import view.activities.currentFragInMain
+import view.activities.currentFragMain
 import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.mainScreen.MainFragment
 
@@ -90,6 +92,7 @@ class RegistrationScreen5 : Fragment() {
         ContextCompat.getDrawable(requireContext(), id)
 
     private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
+        currentFragMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragmnet_layout, fragment)
             addToBackStack(name.toString())
@@ -98,6 +101,7 @@ class RegistrationScreen5 : Fragment() {
     }
 
     private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        currentFragInMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragment, fragment)
             addToBackStack(name.toString())

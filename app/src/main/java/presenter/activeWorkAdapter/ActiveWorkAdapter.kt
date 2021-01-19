@@ -13,10 +13,13 @@ import com.example.physics_lab.R
 import kotlinx.android.synthetic.main.recyclerview_item.view.*
 import kotlinx.android.synthetic.main.recyclerview_item.view.labImage
 import model.CurrentUserData
+import view.activities.currentFragInMain
+import view.activities.currentFragMain
+import view.activities.currentUserData
 import view.activities.dataAboutLabs
 import view.fragments.descriptionScreen.DescriptionScreen
 
-class ActiveWorkAdapter(var currentUserData: CurrentUserData, var fragmentManager: FragmentManager): RecyclerView.Adapter<ActiveWorkAdapter.ActiveWorkHolder>() {
+class ActiveWorkAdapter(var currentUserDataLocal: CurrentUserData, var fragmentManager: FragmentManager): RecyclerView.Adapter<ActiveWorkAdapter.ActiveWorkHolder>() {
     lateinit var labsName: ArrayList<String>
     lateinit var labsTheme: ArrayList<String>
     lateinit var labsEquipment: ArrayList<String>
@@ -48,18 +51,19 @@ class ActiveWorkAdapter(var currentUserData: CurrentUserData, var fragmentManage
                 val descriptionScreen = DescriptionScreen()
                 val bundle = Bundle()
                 bundle.putString("labName", labsName[position])
-                bundle.putString("userClass",currentUserData.grade_level)
+                bundle.putString("userClass",currentUserDataLocal.grade_level)
                 descriptionScreen.arguments = bundle
                 makeCurrentInActiveFragmentWindow(descriptionScreen, "descriptionScreen", fragmentManager)
             }
 
         })
+
     }
     class ActiveWorkHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun setData(){
-        when(currentUserData.grade_level){
+        when(currentUserDataLocal.grade_level){
             "7" -> {
                 labsName = dataAboutLabs.labs7Name
                 labsTheme = dataAboutLabs.labs7Theme
@@ -90,6 +94,7 @@ class ActiveWorkAdapter(var currentUserData: CurrentUserData, var fragmentManage
         name: String,
         fragmentManager: FragmentManager
     ) {
+        currentFragInMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragment, fragment)
             addToBackStack(name.toString())

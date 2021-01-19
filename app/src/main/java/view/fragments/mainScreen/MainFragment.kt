@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import com.example.physics_lab.R
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
 import kotlinx.android.synthetic.main.fragment_main.*
+import view.activities.currentFragInMain
+import view.activities.currentFragMain
 import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.finishWorksScreen.FinishWorksScreen
 import view.fragments.meScreen.MeScreen
@@ -60,6 +62,7 @@ class MainFragment : Fragment() {
 
 
     private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        currentFragInMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragment, fragment)
             addToBackStack(name.toString())

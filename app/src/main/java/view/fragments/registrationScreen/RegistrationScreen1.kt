@@ -10,6 +10,7 @@ import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_login_screen.*
 import kotlinx.android.synthetic.main.fragment_registration_screen.*
+import view.activities.currentFragMain
 import view.activities.currentUserData
 
 class RegistrationScreen1 : Fragment() {
@@ -38,6 +39,7 @@ class RegistrationScreen1 : Fragment() {
     }
 
     private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
+        currentFragMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragmnet_layout, fragment)
             addToBackStack(name.toString())
