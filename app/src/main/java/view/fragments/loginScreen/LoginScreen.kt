@@ -12,6 +12,8 @@ import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login_screen.*
+import view.activities.currentFragInMain
+import view.activities.currentFragMain
 import view.activities.currentUserData
 import view.activities.firebaseRequest
 import view.fragments.activeWorksScreen.ActiveWorksScreen
@@ -84,6 +86,7 @@ class LoginScreen : Fragment() {
     }
 
     private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
+        currentFragMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragmnet_layout, fragment)
             addToBackStack(name.toString())
@@ -92,6 +95,7 @@ class LoginScreen : Fragment() {
     }
 
     private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        currentFragInMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragment, fragment)
             addToBackStack(name.toString())

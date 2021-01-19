@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.physics_lab.R
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
+import view.activities.currentFragMain
 import view.activities.currentUserData
 import view.activities.firebaseRequest
 
@@ -43,6 +44,7 @@ class RegistrationScreenTeacher : Fragment() {
     }
 
     private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
+        currentFragMain = name
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.main_fragmnet_layout, fragment)
             addToBackStack(name.toString())

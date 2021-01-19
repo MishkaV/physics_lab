@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.physics_lab.R
-import model.LabData
-import presenter.activeWorkAdapter.ActiveWorkAdapter
+import view.activities.currentFragInMain
+import view.activities.currentFragMain
+import view.activities.currentUserData
 import view.activities.firebaseRequest
+import view.fragments.verificationWorksScreen.notReadyScreenVer.NotReadyScreenVer
 
 class VerificationWorksScreen : Fragment() {
 
@@ -28,15 +30,30 @@ class VerificationWorksScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        println(currentUserData.verification_works)
         super.onViewCreated(view, savedInstanceState)
-        var orientation = RecyclerView.VERTICAL
-        var spanCount = 1
+        if (currentUserData.finish_works == null || currentUserData.finish_works!!.size == 0) {
+            val notReadyScreen = NotReadyScreenVer()
+            makeCurrentFragmentInMainWindow(notReadyScreen, "notReadyScreen")
+        }
+        else {
+            var orientation = RecyclerView.VERTICAL
+            var spanCount = 1
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewVerificationWork)
-        val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewVerificationWork)
+            val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
 
-        recyclerView.layoutManager = layoutManager
-        firebaseRequest.setAdapter(recyclerView, fragmentManager)
+            recyclerView.layoutManager = layoutManager
+            //firebaseRequest.setAdapter(recyclerView, fragmentManager)
+        }
     }
 
+    private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        currentFragInMain = name
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.main_fragment, fragment)
+            addToBackStack(name.toString())
+            commit()
+        }
+    }
 }
