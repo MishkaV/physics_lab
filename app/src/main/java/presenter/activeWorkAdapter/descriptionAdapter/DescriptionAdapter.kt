@@ -31,7 +31,7 @@ class DescriptionAdapter(var list: List<Model>, var context: Context) : PagerAda
         view.descrTopic.text = list[position].title
         view.descrDescrp.text = list[position].description
 
-        container.addView(view, position)
+        container.addView(view)
         return view
     }
 

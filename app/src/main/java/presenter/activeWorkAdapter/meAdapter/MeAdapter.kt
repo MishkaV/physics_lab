@@ -27,7 +27,7 @@ class MeAdapter(var list: List<Model>, var context: Context) : PagerAdapter() {
         view.meTopic.text = list[position].title
         view.meDescrp.text = list[position].description
 
-        container.addView(view, position)
+        container.addView(view)
         return view
     }
 
