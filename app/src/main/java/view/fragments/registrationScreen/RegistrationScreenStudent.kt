@@ -22,7 +22,6 @@ import view.activities.currentUserData
 import view.activities.firebaseRequest
 
 class RegistrationScreenStudent : Fragment() {
-    private val registrationScreen5 = RegistrationScreen5()
     private var coroutineScope = CoroutineScope(Dispatchers.Main.immediate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +75,9 @@ class RegistrationScreenStudent : Fragment() {
                         return@addOnCompleteListener
                     }
 
+                    val registrationScreen5 = RegistrationScreen5()
                     makeCurrentFragmentMainWindow(registrationScreen5, "registrationScreen5")
+
                     currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
                     currentUserData.verification_works = ArrayMap<String, HashMap<String, String>>()
                     currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()

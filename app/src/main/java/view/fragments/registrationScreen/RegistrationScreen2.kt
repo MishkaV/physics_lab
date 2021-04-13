@@ -16,7 +16,6 @@ import view.activities.currentFragMain
 import view.activities.currentUserData
 
 class RegistrationScreen2 : Fragment() {
-    val registrationScreenStudent =  RegistrationScreenStudent()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +56,9 @@ class RegistrationScreen2 : Fragment() {
             currentUserData.email = mailEditTextReg?.text.toString()
             currentUserData.password = passwordEditTextReg?.text.toString()
 
+            val registrationScreenStudent =  RegistrationScreenStudent()
             makeCurrentFragmentMainWindow(registrationScreenStudent, "registrationScreenStudent")
+
         } else if (mailEditTextReg?.text.toString() == "") {
             mailEditLayoutReg.error = "Введите почту"
         } else {

@@ -14,7 +14,6 @@ import view.activities.currentFragMain
 import view.activities.currentUserData
 
 class RegistrationScreen1 : Fragment() {
-    val registrationScreen2 = RegistrationScreen2()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +57,9 @@ class RegistrationScreen1 : Fragment() {
             currentUserData.name = nameEditTextReg?.text.toString()
             currentUserData.surname = surnameEditTextReg?.text.toString()
             currentUserData.patronymic = patronymicEditTextReg?.text.toString()
+
+
+            val registrationScreen2 = RegistrationScreen2()
             makeCurrentFragmentMainWindow(registrationScreen2, "registrationScreen2")
 
         } else if (nameEditTextReg?.text.toString() == "") {

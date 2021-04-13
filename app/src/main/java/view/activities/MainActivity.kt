@@ -81,9 +81,7 @@ class MainActivity : AppCompatActivity() {
             currentFragInMain = savedInstanceState.getString("currentFragInMain")
             currentFragMain = savedInstanceState.getString("currentFragMain")
 
-            Log.d("IN_IN", "IN")
             if (currentFragMain != null) {
-                Log.d("IN_IN_IN", "IN")
                 when (currentFragMain) {
                     "startScreen" -> {
                         makeCurrentFragmentMainWindow(startScreen, "startScreen")
@@ -166,16 +164,6 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.main_fragment, fragment)
             addToBackStack(name.toString())
             commit()
-        }
-    }
-
-    fun onClick(view: View) {
-        when (view.id) {
-            R.id.button_login -> makeCurrentFragmentMainWindow(loginScreen, "loginScreen")
-            R.id.button_registration -> makeCurrentFragmentMainWindow(
-                registrationScreen1,
-                "registrationScreen1"
-            )
         }
     }
 

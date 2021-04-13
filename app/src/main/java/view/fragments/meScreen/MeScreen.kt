@@ -23,6 +23,8 @@ import presenter.activeWorkAdapter.descriptionAdapter.DescriptionAdapter
 import presenter.activeWorkAdapter.descriptionAdapter.Model
 import presenter.activeWorkAdapter.meAdapter.MeAdapter
 import presenter.activeWorkAdapter.statisticsAdapter.PieChartListAdapter
+import view.activities.currentFragInMain
+import view.activities.currentFragMain
 import view.activities.currentUserData
 import view.fragments.startScreen.StartScreen
 
@@ -52,6 +54,8 @@ class MeScreen : Fragment() {
 
         exitButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
+                currentFragMain = "startScreen"
+                currentFragInMain = null
                 FirebaseAuth.getInstance().signOut()
                 makeCurrentFragmentMainWindow(startScreen, "startScreen")
             }
