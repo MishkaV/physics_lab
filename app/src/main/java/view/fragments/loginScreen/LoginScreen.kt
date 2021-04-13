@@ -22,7 +22,6 @@ import view.fragments.loginScreen.resetPasswordScreen.ResetPasswordScreen
 import view.fragments.mainScreen.MainFragment
 
 class LoginScreen : Fragment() {
-    val mainFragment = MainFragment()
     val resetPasswordScreen = ResetPasswordScreen()
     var coroutineScope = CoroutineScope(Dispatchers.Main.immediate)
 
@@ -42,7 +41,7 @@ class LoginScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val buttonLogin = view.findViewById<MaterialButton>(R.id.loginButtonFrag)
         val buttonReset = view.findViewById<MaterialButton>(R.id.resetButton)
-
+        mailEditTextLog.setText(R.string.empty_space)
         buttonLogin.setOnClickListener() {
             authorization()
         }
@@ -81,6 +80,8 @@ class LoginScreen : Fragment() {
                         currentUserData.finish_works = ArrayMap<String, HashMap<String, String>>()
                         labsData = firebaseRequest.getDataLabs()
                         currentUserData =  firebaseRequest.getUserData()
+
+                        val mainFragment = MainFragment()
                         makeCurrentFragmentMainWindow(mainFragment, "mainFragment")
                         makeCurrentFragmentInMainWindow(activeWorksScreen, "activeWorksScreen")
                     }
