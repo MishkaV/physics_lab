@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="colorPrimary">@color/colorMainBlue</item>
+        <item name="colorPrimaryDark">@color/colorMainBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+</resources>

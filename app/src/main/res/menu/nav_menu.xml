@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/ic_active_work"
+        android:icon="@drawable/ic_active_work"
+        android:title="Активные работы"
+        app:exb_color="@color/colorMainBlue"
+        />
+
+
+    <item
+        android:id="@+id/ic_on_verification_works"
+        android:icon="@drawable/ic_verified_list_of_exercises_of_a_gymnast_on_a_clipboard"
+        android:title="Работы на проверке"
+        app:exb_color="@color/colorMainTurquoise"/>
+
+    <item
+        android:id="@+id/ic_finish_work"
+        android:icon="@drawable/ic_finish_line"
+        android:title="Завершенные работы"
+        app:exb_color="#FF8888"
+        />
+
+
+    <item
+        android:id="@+id/ic_user"
+        android:icon="@drawable/ic_user"
+        android:title="Личный кабинет"
+        app:exb_color="#fa2"/>
+
+</menu>

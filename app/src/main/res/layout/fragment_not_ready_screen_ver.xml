@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="view.fragments.verificationWorksScreen.notReadyScreenVer.NotReadyScreenVer">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/notReadyMainText"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="data_on_work.json"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/notReadyMainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_black"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Пока таких работ нет"
+        android:textColor="@color/colorMainBlue"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/notReadyDesrpText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notReadyMainText"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/rubik_regular"
+        android:gravity="center"
+        android:text="Попробуй провести новый опыт в виртуальной лаборатории!"
+        android:textColor="@color/colorMainBlue"
+        android:textSize="22dp" />
+
+</RelativeLayout>
