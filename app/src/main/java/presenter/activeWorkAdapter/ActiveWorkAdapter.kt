@@ -52,7 +52,7 @@ class ActiveWorkAdapter(var currentUserData: CurrentUserData, var fragmentManage
             holder.itemView.labTheme.text = currLab.info.theme
             holder.itemView.labDeadline.text = "Дедлайн сдачи: " + "20.12.2021"
 
-        Log.d("ACTIVE_ADAPTER","find: " + currLab.name)
+            Log.d("ACTIVE_ADAPTER","find: " + currLab.name)
             holder.itemView.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(v: View?) {
                     val descriptionScreen = DescriptionScreen()

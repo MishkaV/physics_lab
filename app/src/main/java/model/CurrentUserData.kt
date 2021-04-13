@@ -13,5 +13,4 @@ class CurrentUserData {
     var grade_level: String? = null
     var active_works = ArrayMap<String, HashMap<String, String>>()
     var finish_works = ArrayMap<String, HashMap<String, String>>()
-    var verification_works = ArrayMap<String, HashMap<String, String>>()
 }

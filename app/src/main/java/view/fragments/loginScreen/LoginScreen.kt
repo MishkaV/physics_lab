@@ -76,7 +76,6 @@ class LoginScreen : Fragment() {
                     currentUserData.password = password
                     coroutineScope.launch {
                         currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
-                        currentUserData.verification_works = ArrayMap<String, HashMap<String, String>>()
                         currentUserData.finish_works = ArrayMap<String, HashMap<String, String>>()
                         labsData = firebaseRequest.getDataLabs()
                         currentUserData =  firebaseRequest.getUserData()

@@ -31,20 +31,20 @@ class VerificationWorksScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (currentUserData.verification_works == null || currentUserData.verification_works!!.size == 0) {
-            val notReadyScreen = NotReadyScreenVer()
-            makeCurrentFragmentInMainWindow(notReadyScreen, "notReadyScreen")
-        }
-        else {
-            var orientation = RecyclerView.VERTICAL
-            var spanCount = 1
-
-            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewVerificationWork)
-            val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
-
-            recyclerView.layoutManager = layoutManager
-            //firebaseRequest.setAdapter(recyclerView, fragmentManager)
-        }
+//        if (currentUserData.verification_works == null || currentUserData.verification_works!!.size == 0) {
+//            val notReadyScreen = NotReadyScreenVer()
+//            makeCurrentFragmentInMainWindow(notReadyScreen, "notReadyScreen")
+//        }
+//        else {
+//            var orientation = RecyclerView.VERTICAL
+//            var spanCount = 1
+//
+//            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewVerificationWork)
+//            val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
+//
+//            recyclerView.layoutManager = layoutManager
+//            //firebaseRequest.setAdapter(recyclerView, fragmentManager)
+//        }
     }
 
     private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {

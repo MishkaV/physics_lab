@@ -79,8 +79,6 @@ class RegistrationScreenStudent : Fragment() {
                     makeCurrentFragmentMainWindow(registrationScreen5, "registrationScreen5")
 
                     currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
-                    currentUserData.verification_works = ArrayMap<String, HashMap<String, String>>()
-                    currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
 
                     coroutineScope.launch {
                         firebaseRequest.getDataLabs()

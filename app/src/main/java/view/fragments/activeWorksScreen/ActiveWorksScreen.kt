@@ -75,7 +75,6 @@ class ActiveWorksScreen : Fragment() {
             override fun onRefresh() {
                 coroutineScope.launch {
                     currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
-                    currentUserData.verification_works = ArrayMap<String, HashMap<String, String>>()
                     currentUserData.finish_works = ArrayMap<String, HashMap<String, String>>()
                     currentUserData =  firebaseRequest.getUserData()
                     if (currentUserData.active_works.size == 0) {

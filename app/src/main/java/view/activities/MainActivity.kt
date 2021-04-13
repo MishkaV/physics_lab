@@ -43,6 +43,7 @@ var currentFragInMain: String? = null
 var labsData = ArrayList<LabsDataFirebase>()
 
 lateinit var activeWorksScreen: ActiveWorksScreen
+lateinit var finishWorksScreen: FinishWorksScreen
 
 class MainActivity : AppCompatActivity() {
     lateinit var startScreen: StartScreen
@@ -54,7 +55,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var registrationScreen5: RegistrationScreen5
     lateinit var mainScreen: MainFragment
     lateinit var verificationWorksScreen: VerificationWorksScreen
-    lateinit var finishWorksScreen: FinishWorksScreen
     lateinit var descriptionScreen: DescriptionScreen
     lateinit var statisticsScreen: StatisticsScreen
     var coroutineScope = CoroutineScope(Dispatchers.Main.immediate)

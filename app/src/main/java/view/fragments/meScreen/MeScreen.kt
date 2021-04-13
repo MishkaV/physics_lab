@@ -52,14 +52,18 @@ class MeScreen : Fragment() {
         val startScreen = StartScreen()
         val list = ArrayList<Model>()
 
-        exitButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                currentFragMain = "startScreen"
-                currentFragInMain = null
-                FirebaseAuth.getInstance().signOut()
-                makeCurrentFragmentMainWindow(startScreen, "startScreen")
-            }
-        })
+        exitButton.setOnClickListener() {
+            FirebaseAuth.getInstance().signOut()
+            makeCurrentFragmentMainWindow(startScreen, "startScreen")
+        }
+//        exitButton.setOnClickListener(object : View.OnClickListener {
+//            override fun onClick(v: View?) {
+//                currentFragMain = "startScreen"
+//                currentFragInMain = null
+//                FirebaseAuth.getInstance().signOut()
+//                makeCurrentFragmentMainWindow(startScreen, "startScreen")
+//            }
+//        })
 
         list.add(
             Model(

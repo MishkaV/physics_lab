@@ -1,19 +1,27 @@
 package view.fragments.finishWorksScreen
 
 import android.os.Bundle
+import android.util.ArrayMap
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.example.physics_lab.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import presenter.activeWorkAdapter.ActiveWorkAdapter
+import presenter.activeWorkAdapter.FinishWorkAdapter
 import view.activities.currentUserData
 import view.activities.firebaseRequest
 import view.fragments.finishWorksScreen.notReadyScreenFinish.NotReadyScreenFinish
 
 class FinishWorksScreen : Fragment() {
+    private var coroutineScope = CoroutineScope(Dispatchers.Main.immediate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,20 +37,42 @@ class FinishWorksScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (currentUserData.finish_works == null || currentUserData.finish_works!!.size == 0) {
+
+
+        var orientation = RecyclerView.VERTICAL
+        var spanCount = 1
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewFinishWork)
+        val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
+
+        if (currentUserData.finish_works!!.size == 0) {
             val notReadyScreenFinish = NotReadyScreenFinish()
             makeCurrentFragmentInMainWindow(notReadyScreenFinish, "notReadyScreenFinish")
         }
         else {
-            var orientation = RecyclerView.VERTICAL
-            var spanCount = 1
-
-            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewFinishWork)
-            val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
-
             recyclerView.layoutManager = layoutManager
-//            firebaseRequest.setAdapter(recyclerView, fragmentManager)
+            recyclerView.adapter = fragmentManager?.let { FinishWorkAdapter(currentUserData, it) }
         }
+
+        val swipeLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipeLayoutFinish)
+        swipeLayout.setOnRefreshListener(object  : SwipeRefreshLayout.OnRefreshListener {
+            override fun onRefresh() {
+                coroutineScope.launch {
+                    currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
+                    currentUserData.finish_works = ArrayMap<String, HashMap<String, String>>()
+                    currentUserData =  firebaseRequest.getUserData()
+                    if (currentUserData.finish_works.size == 0) {
+                        val notReadyScreenFinish = NotReadyScreenFinish()
+                        makeCurrentFragmentInMainWindow(notReadyScreenFinish, "notReadyScreenFinish")
+                    }
+                    else {
+                        recyclerView.adapter?.notifyDataSetChanged()
+                    }
+                    swipeLayout.isRefreshing = false
+                }
+            }
+
+        })
     }
 
     private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
