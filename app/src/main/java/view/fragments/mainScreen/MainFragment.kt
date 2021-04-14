@@ -11,6 +11,7 @@ import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
 import kotlinx.android.synthetic.main.fragment_main.*
 import view.activities.currentFragInMain
 import view.activities.currentFragMain
+import view.fragments.StatisticsScreen
 import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.finishWorksScreen.FinishWorksScreen
 import view.fragments.meScreen.MeScreen
@@ -40,7 +41,7 @@ class MainFragment : Fragment() {
             BOTTOM_BAR = bottomBar
             val activeWorksScreen = ActiveWorksScreen()
             val finishWorksScreen = FinishWorksScreen()
-            val verificationWorksScreen = VerificationWorksScreen()
+            val statisticsScreen = StatisticsScreen()
             val meScreen = MeScreen()
 
             bottomBar.onItemSelectedListener = { view, menuItem ->
@@ -52,7 +53,7 @@ class MainFragment : Fragment() {
                         makeCurrentFragmentInMainWindow(finishWorksScreen, "finishWorksScreen")
                     }
                     R.id.ic_on_verification_works -> {
-                        makeCurrentFragmentInMainWindow(verificationWorksScreen, "verificationWorksScreen")
+                        makeCurrentFragmentInMainWindow(statisticsScreen, "statisticsScreen")
                     }
                     R.id.ic_user -> {
                         makeCurrentFragmentInMainWindow(meScreen, "meScreen")

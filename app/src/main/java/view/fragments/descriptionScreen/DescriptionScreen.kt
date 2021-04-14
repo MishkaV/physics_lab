@@ -6,14 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import com.example.physics_lab.R
 import kotlinx.android.synthetic.main.fragment_description_screen.*
 import model.Lab
-import presenter.activeWorkAdapter.descriptionAdapter.DescriptionAdapter
-import presenter.activeWorkAdapter.descriptionAdapter.Model
-import view.activities.currentUserData
-import view.activities.dataAboutLabs
+import presenter.descriptionAdapter.DescriptionAdapter
+import presenter.descriptionAdapter.Model
 import view.activities.labsData
 
 class DescriptionScreen : Fragment() {
@@ -28,7 +25,6 @@ class DescriptionScreen : Fragment() {
         if (bundle != null)
         {
             labName = bundle.getString("labName").toString()
-            Log.d("WTF", labName)
             var curr_lab = findLab(labName)
             if(curr_lab != null) {
                 labsTheme = curr_lab.info.theme.toString()
@@ -36,15 +32,11 @@ class DescriptionScreen : Fragment() {
                 labsDesciption = curr_lab.info.description.toString()
             }
             else
-                Log.d("WTF", "WTF")
-
+                Log.d("DESCRIPTION_SCREEN", "WTF")
         }
-
     }
 
     private fun findLab(labName: String): Lab? {
-
-
         for (num_class in labsData) {
             for (lab in num_class.listLabs){
                 if (lab.name == labName)
@@ -83,9 +75,6 @@ class DescriptionScreen : Fragment() {
             labsEquipment
         ))
 
-        viewPager.adapter = context?.let { DescriptionAdapter(list, it) }
-
+        viewPager.adapter = context?.let { DescriptionAdapter(list, it, "active") }
     }
-
-
 }

@@ -1,4 +1,4 @@
-package presenter.activeWorkAdapter.statisticsAdapter
+package presenter.statisticsAdapter
 
 import android.annotation.SuppressLint
 import android.content.Context

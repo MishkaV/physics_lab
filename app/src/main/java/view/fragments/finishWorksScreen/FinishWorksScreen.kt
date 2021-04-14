@@ -14,8 +14,7 @@ import com.example.physics_lab.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import presenter.activeWorkAdapter.ActiveWorkAdapter
-import presenter.activeWorkAdapter.FinishWorkAdapter
+import presenter.finishWorkAdapter.FinishWorkAdapter
 import view.activities.currentUserData
 import view.activities.firebaseRequest
 import view.fragments.finishWorksScreen.notReadyScreenFinish.NotReadyScreenFinish

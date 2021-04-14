@@ -9,22 +9,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.example.physics_lab.R
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_description_screen.*
 import kotlinx.android.synthetic.main.fragment_me_screen.*
-import presenter.activeWorkAdapter.descriptionAdapter.DescriptionAdapter
-import presenter.activeWorkAdapter.descriptionAdapter.Model
-import presenter.activeWorkAdapter.meAdapter.MeAdapter
-import presenter.activeWorkAdapter.statisticsAdapter.PieChartListAdapter
-import view.activities.currentFragInMain
-import view.activities.currentFragMain
+import presenter.descriptionAdapter.Model
+import presenter.meAdapter.MeAdapter
+import presenter.statisticsAdapter.PieChartListAdapter
 import view.activities.currentUserData
 import view.fragments.startScreen.StartScreen
 
@@ -54,16 +48,9 @@ class MeScreen : Fragment() {
 
         exitButton.setOnClickListener() {
             FirebaseAuth.getInstance().signOut()
+            fragmentManager?.popBackStack()
             makeCurrentFragmentMainWindow(startScreen, "startScreen")
         }
-//        exitButton.setOnClickListener(object : View.OnClickListener {
-//            override fun onClick(v: View?) {
-//                currentFragMain = "startScreen"
-//                currentFragInMain = null
-//                FirebaseAuth.getInstance().signOut()
-//                makeCurrentFragmentMainWindow(startScreen, "startScreen")
-//            }
-//        })
 
         list.add(
             Model(

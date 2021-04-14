@@ -1,4 +1,4 @@
-package presenter.activeWorkAdapter.meAdapter
+package presenter.statisticsAdapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
-import kotlinx.android.synthetic.main.recyclerview_about_me.view.*
-import kotlinx.android.synthetic.main.recyclerview_description.view.*
-import presenter.activeWorkAdapter.descriptionAdapter.Model
+import com.github.mikephil.charting.data.BarData
+import kotlinx.android.synthetic.main.barchart_list.view.*
 
-class MeAdapter(var list: List<Model>, var context: Context) : PagerAdapter() {
+class BarChartListAdapter (var list: List<BarData>, var context: Context) : PagerAdapter() {
+
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
     }
@@ -22,10 +22,11 @@ class MeAdapter(var list: List<Model>, var context: Context) : PagerAdapter() {
     @SuppressLint("ResourceType")
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val layoutInflater = LayoutInflater.from(context)
-        val view: View = layoutInflater.inflate(com.example.physics_lab.R.layout.recyclerview_about_me, container, false)
+        val view: View = layoutInflater.inflate(com.example.physics_lab.R.layout.barchart_list, container, false)
 
-        view.meTopic.text = list[position].title
-        view.meDescrp.text = list[position].description
+        view.barChart.data = list[position]
+        view.barChart.setFitBars(true)
+        view.barChart.animateY(1000)
 
         container.addView(view)
         return view
@@ -34,5 +35,4 @@ class MeAdapter(var list: List<Model>, var context: Context) : PagerAdapter() {
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
-
 }

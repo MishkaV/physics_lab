@@ -1,4 +1,4 @@
-package presenter.activeWorkAdapter.descriptionAdapter
+package presenter.descriptionAdapter
 
 class Model (
     var title: String,

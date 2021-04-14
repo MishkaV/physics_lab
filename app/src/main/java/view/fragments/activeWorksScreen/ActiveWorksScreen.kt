@@ -1,39 +1,23 @@
 package view.fragments.activeWorksScreen
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.ArrayMap
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.DecelerateInterpolator
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.physics_lab.R
-import com.takusemba.spotlight.OnSpotlightListener
-import com.takusemba.spotlight.OnTargetListener
-import com.takusemba.spotlight.Spotlight
-import com.takusemba.spotlight.Target
-import com.takusemba.spotlight.effet.RippleEffect
-import com.takusemba.spotlight.shape.Circle
-import kotlinx.android.synthetic.main.fragment_active_works_screen.*
-import kotlinx.android.synthetic.main.fragment_statistics_screen.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import presenter.activeWorkAdapter.ActiveWorkAdapter
 import view.activities.currentUserData
 import view.activities.firebaseRequest
-import view.activities.labsData
 import view.fragments.activeWorksScreen.notReadyScreenActive.NotReadyScreenActive
-import view.fragments.finishWorksScreen.notReadyScreenFinish.NotReadyScreenFinish
-import view.fragments.mainScreen.BOTTOM_BAR
 
 
 class ActiveWorksScreen : Fragment() {

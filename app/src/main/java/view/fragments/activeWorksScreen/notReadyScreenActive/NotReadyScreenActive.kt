@@ -6,19 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.physics_lab.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import presenter.activeWorkAdapter.ActiveWorkAdapter
 import view.activities.activeWorksScreen
 import view.activities.currentUserData
 import view.activities.firebaseRequest
-import view.fragments.activeWorksScreen.ActiveWorksScreen
-import view.fragments.finishWorksScreen.notReadyScreenFinish.NotReadyScreenFinish
 
 class NotReadyScreenActive : Fragment() {
 

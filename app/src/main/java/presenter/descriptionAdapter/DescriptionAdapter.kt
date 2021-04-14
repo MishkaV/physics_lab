@@ -1,19 +1,15 @@
-package presenter.activeWorkAdapter.descriptionAdapter
+package presenter.descriptionAdapter
 
-import android.R
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import kotlinx.android.synthetic.main.recyclerview_description.view.*
 
 
-class DescriptionAdapter(var list: List<Model>, var context: Context) : PagerAdapter() {
+class DescriptionAdapter(var list: List<Model>, var context: Context, var type: String) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
@@ -26,7 +22,11 @@ class DescriptionAdapter(var list: List<Model>, var context: Context) : PagerAda
     @SuppressLint("ResourceType")
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val layoutInflater = LayoutInflater.from(context)
-        val view: View = layoutInflater.inflate(com.example.physics_lab.R.layout.recyclerview_description, container, false)
+        var view: View? = null
+        if (type == "active")
+            view = layoutInflater.inflate(com.example.physics_lab.R.layout.recyclerview_description, container, false)
+        else
+            view = layoutInflater.inflate(com.example.physics_lab.R.layout.recyclerview_description_finish, container, false)
 
         view.descrTopic.text = list[position].title
         view.descrDescrp.text = list[position].description

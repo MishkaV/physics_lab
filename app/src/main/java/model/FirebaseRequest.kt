@@ -2,19 +2,14 @@ package model
 
 import android.util.ArrayMap
 import android.util.Log
-import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import presenter.activeWorkAdapter.ActiveWorkAdapter
 import view.activities.currentUserData
-import view.activities.dataAboutLabs
 import view.activities.labsData
 
 class FirebaseRequest {
@@ -100,7 +95,7 @@ class FirebaseRequest {
                                     val dataUploadLab = HashMap<String, String>()
                                     var dataLab = lab.value as HashMap<*, *>
                                     dataUploadLab["name"] = dataLab["name"].toString()
-                                    dataUploadLab["comment"] = dataLab["name"].toString()
+                                    dataUploadLab["comment"] = dataLab["comment"].toString()
                                     dataUploadLab["score"] = dataLab["score"].toString()
                                     dataUploadLab["time"] = dataLab["time"].toString()
                                     currentUserData.finish_works.put(dataLab["name"].toString(), dataUploadLab)

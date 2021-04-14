@@ -9,6 +9,7 @@
         android:id="@+id/barChartViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="102dp"
         android:layout_centerInParent="true"
         android:clipToPadding="false"
         android:foregroundGravity="center"
