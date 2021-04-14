@@ -13,13 +13,12 @@ import com.example.physics_lab.R
 import com.getbase.floatingactionbutton.FloatingActionButton
 import presenter.statisticsAdapter.BarChartData
 import presenter.statisticsAdapter.BarChartRecyclerAdapter
-import presenter.statisticsAdapter.PieChartData
-import presenter.statisticsAdapter.PieChartRecyclerAdapter
 import view.activities.currentFragInMain
 import view.activities.currentUserData
 import view.activities.labsData
 
 class StatisticsScreenBarChart : Fragment() {
+    private var listDataByGroup = ArrayList<ArrayList<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,13 +43,19 @@ class StatisticsScreenBarChart : Fragment() {
         var listData = ArrayMap<String, ArrayList<BarChartData>>()
 
         listData = putData(listData, findDistributionByThemes(), "Распределение по темам")
-//        listData = putData(listData, findDistributionByWorks(), "Распределение по работам")
+        listData = putData(listData, findDistributionByWorks(), "Типы работ")
 
-//        if (findDistributionByScore().size != 0)
-//            listData = putData(listData, findDistributionByScore(), "Распределение по оценкам")
+        val byScore = findDistributionByScore()
+        for (data in byScore) {
+            if (data.value != 0F) {
+                listData = putData(listData, byScore, "Оценки")
+                break
+            }
+        }
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = fragmentManager?.let { BarChartRecyclerAdapter(listData, it) }
+        recyclerView.adapter =
+            fragmentManager?.let { BarChartRecyclerAdapter(listData, it, listDataByGroup) }
 
         val buttonBar = view.findViewById<FloatingActionButton>(R.id.floatingActioButtonPieChart)
         buttonBar.setOnClickListener() {
@@ -61,11 +66,11 @@ class StatisticsScreenBarChart : Fragment() {
 
 
     private fun putData(
-        listData: ArrayMap<String,ArrayList<BarChartData>>,
-        listUploadData : HashMap<Float, Float>,
-        theme : String)
-            : ArrayMap<String, ArrayList<BarChartData>>
-    {
+        listData: ArrayMap<String, ArrayList<BarChartData>>,
+        listUploadData: HashMap<Float, Float>,
+        theme: String
+    )
+            : ArrayMap<String, ArrayList<BarChartData>> {
         var arrayListPieData = ArrayList<BarChartData>()
 
         for (data in listUploadData) {
@@ -79,51 +84,69 @@ class StatisticsScreenBarChart : Fragment() {
     }
 
     private fun findDistributionByThemes(): HashMap<Float, Float> {
+        var listDataThemes = ArrayList<String>()
         var listData = HashMap<Float, Float>()
-        var listDataCheck = ArrayList<String>()
         for (labs in labsData) {
             if (labs.classNumber == currentUserData.grade_level) {
                 for (lab in labs.listLabs) {
-                    if (!(lab.info.theme in listDataCheck)) {
-                        listData.put((listData.size - 1).toFloat(), 1F)
-                        listDataCheck.add(lab.info.theme.toString())
+                    if (!(lab.info.theme in listDataThemes)) {
+                        listData.put((listData.size).toFloat(), 1F)
+                        listDataThemes.add(lab.info.theme.toString())
                     } else {
-                        val pos = listDataCheck.indexOf(lab.info.theme)
+                        val pos = listDataThemes.indexOf(lab.info.theme)
                         val value = listData[pos.toFloat()]
                         if (value != null) {
                             listData[pos.toFloat()] = value + 1F
-                        }
-                        else {
+                        } else {
                             listData[pos.toFloat()] = 1F
                         }
                     }
                 }
+                listDataByGroup.add(listDataThemes)
                 return listData
             }
         }
+        listDataByGroup.add(listDataThemes)
         return listData
     }
 
-    private fun findDistributionByScore(): HashMap<String, Float> {
-        var listData = HashMap<String, Float>()
+    private fun findDistributionByScore(): HashMap<Float, Float> {
+        var listData = HashMap<Float, Float>()
+        var listDataScore = ArrayList<String>()
+        listDataScore.add("0")
+        listDataScore.add("1")
+        listDataScore.add("2")
+        listDataScore.add("3")
+        listDataScore.add("4")
+        listDataScore.add("5")
+        listData[0F] = 0F
+        listData[1F] = 0F
+        listData[2F] = 0F
+        listData[3F] = 0F
+        listData[4F] = 0F
+        listData[5F] = 0F
         for (labs in currentUserData.finish_works) {
-            if (!listData.containsKey(labs.value["score"])) {
-                listData[labs.value["score"].toString()] = 1F
+            val pos = listDataScore.indexOf(labs.value["score"].toString())
+            val value = listData[pos.toFloat()]
+            if (value != null) {
+                listData[pos.toFloat()] = value + 1F
             } else {
-                val value = listData[labs.value["score"].toString()]
-                if (value != null) {
-                    listData[labs.value["score"].toString()] = value + 1F
-                } else
-                    listData[labs.value["score"].toString()] = 1F
+                listData[pos.toFloat()] = 1F
             }
         }
+        listDataByGroup.add(listDataScore)
         return listData
     }
 
-    private fun findDistributionByWorks(): HashMap<String, Float> {
-        var listData = HashMap<String, Float>()
-        listData["Активные работы"] = currentUserData.active_works.size.toFloat()
-        listData["Завершенные работы"] = currentUserData.finish_works.size.toFloat()
+    private fun findDistributionByWorks(): HashMap<Float, Float> {
+        var listData = HashMap<Float, Float>()
+        var listDataWorks = ArrayList<String>()
+        listData[0F] = currentUserData.active_works.size.toFloat()
+        listData[1F] = currentUserData.finish_works.size.toFloat()
+
+        listDataWorks.add("Активные работы")
+        listDataWorks.add("Завершенные работы")
+        listDataByGroup.add(listDataWorks)
         return listData
     }
 
