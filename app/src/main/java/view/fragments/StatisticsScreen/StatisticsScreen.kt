@@ -40,10 +40,10 @@ class StatisticsScreen : Fragment() {
         var listData = ArrayMap<String, ArrayList<PieChartData>>()
 
         listData = putData(listData, findDistributionByThemes(), "Распределение по темам")
-        listData = putData(listData, findDistributionByWorks(), "Распределение по работам")
+        listData = putData(listData, findDistributionByWorks(), "Типы работ")
 
         if (findDistributionByScore().size != 0)
-            listData = putData(listData, findDistributionByScore(), "Распределение по оценкам")
+            listData = putData(listData, findDistributionByScore(), "Оценки")
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = fragmentManager?.let { PieChartRecyclerAdapter(listData, it) }
@@ -55,17 +55,6 @@ class StatisticsScreen : Fragment() {
             val barChartScreen = StatisticsScreenBarChart()
             makeCurrentFragmentInMainWindow(barChartScreen, "barChartScreen")
         }
-//        Для BarChart
-//        val pagerView = view.findViewById<ViewPager>(R.id.barChartViewPager)
-//        val list = ArrayList<BarData>()
-//
-//        for (i in 1..5)
-//        {
-//            list.add(createBarChart(view))
-//        }
-//
-//        pagerView.adapter = context?.let { BarChartListAdapter(list, it) }
-
     }
 
     private fun putData(
