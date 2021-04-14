@@ -3,16 +3,10 @@ package view.activities
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.physics_lab.R
 import com.google.firebase.auth.FirebaseAuth
-import com.skydoves.transformationlayout.onTransformationStartContainer
-import com.yalantis.guillotine.animation.GuillotineAnimation.GuillotineBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,9 +14,8 @@ import model.CurrentUserData
 import model.DataAboutLabs
 import model.FirebaseRequest
 import model.LabsDataFirebase
-import view.fragments.StatisticsScreen
+import view.fragments.StatisticsScreen.StatisticsScreen
 import view.fragments.activeWorksScreen.ActiveWorksScreen
-import view.fragments.activeWorksScreen.notReadyScreenActive.NotReadyScreenActive
 import view.fragments.descriptionScreen.DescriptionScreen
 import view.fragments.finishWorksScreen.FinishWorksScreen
 import view.fragments.loginScreen.LoginScreen

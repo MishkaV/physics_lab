@@ -10,12 +10,10 @@ import com.example.physics_lab.R
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
 import kotlinx.android.synthetic.main.fragment_main.*
 import view.activities.currentFragInMain
-import view.activities.currentFragMain
-import view.fragments.StatisticsScreen
+import view.fragments.StatisticsScreen.StatisticsScreen
 import view.fragments.activeWorksScreen.ActiveWorksScreen
 import view.fragments.finishWorksScreen.FinishWorksScreen
 import view.fragments.meScreen.MeScreen
-import view.fragments.verificationWorksScreen.VerificationWorksScreen
 
 var BOTTOM_BAR: View? = null
 

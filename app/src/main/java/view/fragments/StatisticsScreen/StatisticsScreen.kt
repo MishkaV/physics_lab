@@ -1,6 +1,5 @@
-package view.fragments
+package view.fragments.StatisticsScreen
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.ArrayMap
 import android.util.Log
@@ -11,15 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import com.example.physics_lab.R
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.utils.ColorTemplate
-import presenter.finishWorkAdapter.FinishWorkAdapter
+import com.getbase.floatingactionbutton.FloatingActionButton
 import presenter.statisticsAdapter.PieChartData
-import presenter.statisticsAdapter.PieChartListAdapter
 import presenter.statisticsAdapter.PieChartRecyclerAdapter
+import view.activities.currentFragInMain
 import view.activities.currentUserData
 import view.activities.labsData
 
@@ -40,10 +35,8 @@ class StatisticsScreen : Fragment() {
 
         var orientation = RecyclerView.VERTICAL
         var spanCount = 1
-
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewStatisticScreen)
         val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
-
         var listData = ArrayMap<String, ArrayList<PieChartData>>()
 
         listData = putData(listData, findDistributionByThemes(), "Распределение по темам")
@@ -55,6 +48,13 @@ class StatisticsScreen : Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = fragmentManager?.let { PieChartRecyclerAdapter(listData, it) }
 
+
+        val buttonBar = view.findViewById<FloatingActionButton>(R.id.floatingActioButtonBarChart)
+
+        buttonBar.setOnClickListener() {
+            val barChartScreen = StatisticsScreenBarChart()
+            makeCurrentFragmentInMainWindow(barChartScreen, "barChartScreen")
+        }
 //        Для BarChart
 //        val pagerView = view.findViewById<ViewPager>(R.id.barChartViewPager)
 //        val list = ArrayList<BarData>()
@@ -159,4 +159,12 @@ class StatisticsScreen : Fragment() {
     }
 */
 
+    private fun makeCurrentFragmentInMainWindow(fragment: Fragment, name: String) {
+        currentFragInMain = name
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.main_fragment, fragment)
+            addToBackStack(name.toString())
+            commit()
+        }
+    }
 }

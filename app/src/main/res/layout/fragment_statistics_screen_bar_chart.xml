@@ -7,15 +7,15 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewStatisticScreen"
+        android:id="@+id/recyclerViewStatisticScreenBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        tools:listitem="@layout/piechart_list"
+        tools:listitem="@layout/barchart_list"
         android:layout_marginBottom="102dp" />
 
     <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActioButtonBarChart"
+        android:id="@+id/floatingActioButtonPieChart"
         android:layout_marginRight="6dp"
         android:layout_marginTop="12dp"
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
         android:layout_gravity="right"
         fab:fab_colorNormal="@android:color/white"
         fab:fab_title="Label on the right"
-        android:src="@drawable/ic_barchart"
+        android:src="@drawable/ic_piechart"
         tools:ignore="RtlHardcoded" />
 
 
