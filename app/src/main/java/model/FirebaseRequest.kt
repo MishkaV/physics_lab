@@ -104,6 +104,12 @@ class FirebaseRequest {
                         }
                     }
                 })
+                .addOnFailureListener (object : OnFailureListener {
+                    override fun onFailure(p0: java.lang.Exception) {
+                        Log.d("GET_USER_DATA", p0.toString())
+                    }
+
+                })
                 .await()
             currentUserData
         }

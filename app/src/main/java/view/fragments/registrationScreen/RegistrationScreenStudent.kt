@@ -81,6 +81,8 @@ class RegistrationScreenStudent : Fragment() {
                     currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
 
                     coroutineScope.launch {
+                        currentUserData.active_works = ArrayMap<String, HashMap<String, String>>()
+                        currentUserData.finish_works = ArrayMap<String, HashMap<String, String>>()
                         firebaseRequest.getDataLabs()
                         firebaseRequest.createNewUser()
                     }
