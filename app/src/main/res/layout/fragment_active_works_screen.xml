@@ -25,34 +25,6 @@
                 tools:listitem="@layout/recyclerview_item"
                 android:layout_marginBottom="102dp" />
 
-            <com.getbase.floatingactionbutton.FloatingActionsMenu
-                android:layout_marginRight="6dp"
-                android:layout_marginTop="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                fab:fab_addButtonColorNormal="@android:color/white"
-                fab:fab_addButtonPlusIconColor="#000000"
-                fab:fab_expandDirection="down"
-                android:layout_gravity="right"
-                android:id="@+id/secretButton"
-                tools:ignore="RtlHardcoded">
-
-                <com.getbase.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActioButtonSpotlight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    fab:fab_colorNormal="@android:color/white"
-                    fab:fab_title="Label on the right"
-                    android:src="@drawable/ic_info" />
-
-                <com.getbase.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActioButtonLink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    fab:fab_colorNormal="@android:color/white"
-                    fab:fab_title="Another one on the right"
-                    android:src="@drawable/ic_active_work" />
-            </com.getbase.floatingactionbutton.FloatingActionsMenu>
         </FrameLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

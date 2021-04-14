@@ -1,17 +1,30 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context="view.fragments.finishWorksScreen.FinishWorksScreen">
 
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/barChartViewPager"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewStatisticScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="102dp"
-        android:layout_centerInParent="true"
         android:clipToPadding="false"
-        android:foregroundGravity="center"
-        android:overScrollMode="never"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:listitem="@layout/piechart_list"
+        android:layout_marginBottom="102dp" />
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActioButtonSpotlight"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        fab:fab_colorNormal="@android:color/white"
+        fab:fab_title="Label on the right"
+        android:src="@drawable/ic_info"
+        tools:ignore="RtlHardcoded" />
+
+
+</FrameLayout>

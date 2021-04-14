@@ -46,10 +46,8 @@ class ActiveWorkAdapter(var currentUserData: CurrentUserData, var fragmentManage
                     }
                 }
             }
-//            Log.d("ACTIVE_ADAPTER", "info " + currLab.info.description.toString())
-//            Log.d("ACTIVE_ADAPTER", "theme: " + currLab.info.theme.toString())
             holder.itemView.labTheme.text = currLab.info.theme
-            holder.itemView.labDeadline.text = "Дедлайн сдачи: " + "20.12.2021"
+//            holder.itemView.labDeadline.text = "Дедлайн сдачи: " + "20.12.2021"
 
             Log.d("ACTIVE_ADAPTER","find: " + currLab.name)
             holder.itemView.setOnClickListener(object : View.OnClickListener {

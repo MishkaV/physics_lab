@@ -2,17 +2,26 @@ package view.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.ArrayMap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.physics_lab.R
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
+import presenter.finishWorkAdapter.FinishWorkAdapter
+import presenter.statisticsAdapter.PieChartData
 import presenter.statisticsAdapter.PieChartListAdapter
+import presenter.statisticsAdapter.PieChartRecyclerAdapter
+import view.activities.currentUserData
+import view.activities.labsData
 
 
 class StatisticsScreen : Fragment() {
@@ -29,18 +38,22 @@ class StatisticsScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var orientation = RecyclerView.VERTICAL
+        var spanCount = 1
 
-//        Для PieChart
-        val pagerView = view.findViewById<ViewPager>(R.id.barChartViewPager)
-        val list = ArrayList<PieData>()
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewStatisticScreen)
+        val layoutManager = GridLayoutManager(requireContext(), spanCount, orientation, false)
 
-        for (i in 1..5)
-        {
-            list.add(createPieChart(view))
-        }
+        var listData = ArrayMap<String, ArrayList<PieChartData>>()
 
-        pagerView.adapter = context?.let { PieChartListAdapter(list, it) }
+        listData = putData(listData, findDistributionByThemes(), "Распределение по темам")
+        listData = putData(listData, findDistributionByWorks(), "Распределение по работам")
 
+        if (findDistributionByScore().size != 0)
+            listData = putData(listData, findDistributionByScore(), "Распределение по оценкам")
+
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = fragmentManager?.let { PieChartRecyclerAdapter(listData, it) }
 
 //        Для BarChart
 //        val pagerView = view.findViewById<ViewPager>(R.id.barChartViewPager)
@@ -55,26 +68,68 @@ class StatisticsScreen : Fragment() {
 
     }
 
+    private fun putData(
+        listData: ArrayMap<String,ArrayList<PieChartData>>,
+        listUploadData : HashMap<String, Float>,
+        theme : String)
+    : ArrayMap<String, ArrayList<PieChartData>>
+    {
+        var arrayListPieData = ArrayList<PieChartData>()
 
-    private fun createPieChart(view: View): PieData {
+        for (data in listUploadData) {
+            var pieChartData = PieChartData()
+            pieChartData.value = data.value
+            pieChartData.description = data.key
+            arrayListPieData.add(pieChartData)
+        }
+        listData.put(theme, arrayListPieData)
 
-        val pieChart = view.findViewById<PieChart>(R.id.pieChart)
-        val data = ArrayList<PieEntry>()
-        data.add(PieEntry(5F, "Механика"))
-        data.add(PieEntry(3F, "Квантовая механика"))
-        data.add(PieEntry(2F, "Термодинамика"))
+        return listData
+    }
 
-        val pieDataSet = PieDataSet(data, "Распределение работ")
-        pieDataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
-        pieDataSet.valueTextColor = Color.BLACK
-        pieDataSet.valueTextSize = 16f
+    private fun findDistributionByThemes(): HashMap<String, Float> {
+        var listData = HashMap<String, Float>()
+        for (labs in labsData) {
+            if (labs.classNumber == currentUserData.grade_level) {
+                for (lab in labs.listLabs) {
+                    Log.d("CHECK_FIND", lab.info.theme.toString())
+                    if (!listData.containsKey(lab.info.theme)) {
+                        listData[lab.info.theme.toString()] = 1F
+                    } else {
+                        val value = listData[lab.info.theme.toString()]
+                        if (value != null) {
+                            listData[lab.info.theme.toString()] = value + 1F
+                        } else
+                            listData[lab.info.theme.toString()] = 1F
+                    }
+                }
+                return listData
+            }
+        }
+        return listData
+    }
 
-        val pieData = PieData(pieDataSet)
-        return pieData
-//        pieChart.data = pieData
-//        pieChart.description.isEnabled = false
-//        pieChart.centerText = "Распределение"
-//        pieChart.animateY(1000, Easing.EaseInOutExpo)
+    private fun findDistributionByScore(): HashMap<String, Float> {
+        var listData = HashMap<String, Float>()
+        for (labs in currentUserData.finish_works) {
+            if (!listData.containsKey(labs.value["score"])) {
+                listData[labs.value["score"].toString()] = 1F
+            } else {
+                val value = listData[labs.value["score"].toString()]
+                if (value != null) {
+                    listData[labs.value["score"].toString()] = value + 1F
+                } else
+                    listData[labs.value["score"].toString()] = 1F
+            }
+        }
+        return listData
+    }
+
+    private fun findDistributionByWorks(): HashMap<String, Float> {
+        var listData = HashMap<String, Float>()
+        listData["Активные работы"] = currentUserData.active_works.size.toFloat()
+        listData["Завершенные работы"] = currentUserData.finish_works.size.toFloat()
+        return listData
     }
 
 /*

@@ -14,20 +14,18 @@
             android:id="@+id/viewPagerMe"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:layout_marginTop="20dp"
             android:clipToPadding="false"
             android:foregroundGravity="center"
             android:overScrollMode="never" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/graphViewPager"
+        <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:clipToPadding="false"
-            android:foregroundGravity="center"
-            android:overScrollMode="never" />
+            android:layout_weight="4"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="data2.json"
+            app:lottie_loop="true" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/exitButton"

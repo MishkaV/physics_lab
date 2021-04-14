@@ -70,34 +70,34 @@ class MeScreen : Fragment() {
         )
 
         viewPagerMe.adapter = context?.let { MeAdapter(list, it) }
-        createGraphViewPager(view)
+//        createGraphViewPager(view)
     }
 
-    private fun createGraphViewPager(view: View) {
-        val pagerView = view.findViewById<ViewPager>(R.id.graphViewPager)
-        val list = ArrayList<PieData>()
-
-        for (i in 1..5)
-        {
-            list.add(createPieChart(view))
-        }
-
-        pagerView.adapter = context?.let { PieChartListAdapter(list, it) }
-    }
-
-    private fun createPieChart(view: View): PieData {
-        val data = ArrayList<PieEntry>()
-        data.add(PieEntry(5F, "Механика"))
-        data.add(PieEntry(3F, "Квантовая механика"))
-        data.add(PieEntry(2F, "Термодинамика"))
-
-        val pieDataSet = PieDataSet(data, "Распределение работ")
-        pieDataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
-        pieDataSet.valueTextColor = Color.BLACK
-        pieDataSet.valueTextSize = 16f
-
-        return PieData(pieDataSet)
-    }
+//    private fun createGraphViewPager(view: View) {
+//        val pagerView = view.findViewById<ViewPager>(R.id.graphViewPager)
+//        val list = ArrayList<PieData>()
+//
+//        for (i in 1..5)
+//        {
+//            list.add(createPieChart(view))
+//        }
+//
+//        pagerView.adapter = context?.let { PieChartListAdapter(list, it) }
+//    }
+//
+//    private fun createPieChart(view: View): PieData {
+//        val data = ArrayList<PieEntry>()
+//        data.add(PieEntry(5F, "Механика"))
+//        data.add(PieEntry(3F, "Квантовая механика"))
+//        data.add(PieEntry(2F, "Термодинамика"))
+//
+//        val pieDataSet = PieDataSet(data, "")
+//        pieDataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
+//        pieDataSet.valueTextColor = Color.BLACK
+//        pieDataSet.valueTextSize = 16f
+//
+//        return PieData(pieDataSet)
+//    }
 
     private fun makeCurrentFragmentMainWindow(fragment: Fragment, name: String) {
         fragmentManager?.beginTransaction()?.apply {

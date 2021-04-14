@@ -6,16 +6,6 @@
     android:layout_weight="9"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/meHello"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="2"
-        android:fontFamily="@font/rubik_bold"
-        android:gravity="center"
-        android:textColor="@color/colorMainBlue"
-        android:textSize="25dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,14 +13,37 @@
         android:layout_marginBottom="100dp"
         android:layout_weight="7"
         android:weightSum="3">
-
-        <com.airbnb.lottie.LottieAnimationView
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="data2.json"
-            app:lottie_loop="true" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical">
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="data2.json"
+                app:lottie_loop="true" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/exitButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="12dp"
+                app:strokeWidth="2dp"
+                app:cornerRadius="15dp"
+                android:backgroundTint="@color/colorMainBlue"
+                app:strokeColor="@color/colorMainBlue"
+                android:textColor="@color/colorMainWhite"
+                android:text="Выйти"
+                android:fontFamily="@font/rubik_regular"
+                />
+
+        </LinearLayout>
+
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPagerMe"
@@ -41,5 +54,7 @@
             android:foregroundGravity="center"
             android:overScrollMode="never" />
 
+
     </LinearLayout>
+
 </LinearLayout>
