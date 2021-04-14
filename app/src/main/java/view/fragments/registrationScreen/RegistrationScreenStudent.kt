@@ -88,6 +88,9 @@ class RegistrationScreenStudent : Fragment() {
                     }
                     Log.d("registrationRequest", "Successfull!")
                 }
+                .addOnFailureListener {
+                    Log.d("registrationRequest", it.toString())
+                }
         }
     }
 }
