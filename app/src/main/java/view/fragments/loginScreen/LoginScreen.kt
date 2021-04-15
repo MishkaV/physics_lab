@@ -67,7 +67,7 @@ class LoginScreen : Fragment() {
                     if (!it.isSuccessful) {
                         Toast.makeText(
                             context,
-                            "Извините, но набрана неверная комбинация логин/пароль",
+                            "Проверьте комбинацию логин/пароль и подключение к интернету",
                             Toast.LENGTH_SHORT
                         ).show()
                         return@addOnCompleteListener
@@ -85,6 +85,9 @@ class LoginScreen : Fragment() {
                         makeCurrentFragmentInMainWindow(activeWorksScreen, "activeWorksScreen")
                     }
                     Log.d("AUTHORIZATION", "Successfull!")
+                }
+                .addOnFailureListener {
+                    Log.d("AUTHORIZATION", it.toString())
                 }
         } else if (mailEditTextLog?.text.toString() == "") {
             mailEditLayoutLog.error = "Введите почту"

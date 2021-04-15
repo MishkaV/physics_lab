@@ -1,51 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="10dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="12dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    style="@style/Widget.MaterialComponents.CardView"
     >
 
-    <com.google.android.material.card.MaterialCardView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="22dp"
-        >
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/descriptionImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="5"
+            android:scaleType="centerCrop"
+            android:transitionName="imageViewTran"
+            android:src="@drawable/background_description_finish"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/background_descr">
 
             <TextView
                 android:id="@+id/descrTopic"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:layout_above="@id/descrDescrp"
                 android:fontFamily="@font/rubik_black"
                 android:textColor="@color/colorMainWhite"
                 android:textSize="30dp"
-                android:gravity="center"
+                android:layout_marginBottom="30dp"
+                android:gravity="center_horizontal"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 />
             <TextView
                 android:id="@+id/descrDescrp"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_black"
                 android:textSize="25dp"
-                android:layout_weight="4"
+                android:layout_centerInParent="true"
                 android:textColor="@color/colorMainWhite"
                 android:gravity="center"
                 android:layout_margin="10dp"
                 />
-        </LinearLayout>
+        </RelativeLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>
 
 
-</LinearLayout>

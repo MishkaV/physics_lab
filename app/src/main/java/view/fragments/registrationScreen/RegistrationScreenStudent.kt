@@ -69,7 +69,7 @@ class RegistrationScreenStudent : Fragment() {
                     if (!it.isSuccessful) {
                         Toast.makeText(
                             context,
-                            "Извините, но такой пользователь уже существует",
+                            "Проверьте данные пользователя и подключение к интернету",
                             Toast.LENGTH_SHORT
                         ).show()
                         return@addOnCompleteListener

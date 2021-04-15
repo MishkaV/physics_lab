@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="10dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    style="@style/Widget.MaterialComponents.CardView"
     >
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="22dp"
-        >
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="3"
             android:background="@drawable/background_me3">
-
             <TextView
                 android:id="@+id/meTopic"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_black"
                 android:textColor="@color/colorMainWhite"
-                android:textSize="30dp"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:textSize="30sp"
+                android:layout_above="@+id/meDescrp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="2dp"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 />
             <TextView
                 android:id="@+id/meDescrp"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:fontFamily="@font/rubik_regular"
-                android:textSize="25dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_black"
+                android:textSize="25sp"
                 android:textColor="@color/colorMainWhite"
-                android:gravity="top"
+                android:layout_centerInParent="true"
                 android:layout_margin="10dp"
-                android:layout_weight="2"
                 />
-        </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
 
+</com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>

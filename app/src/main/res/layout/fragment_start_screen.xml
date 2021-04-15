@@ -41,6 +41,7 @@
             android:backgroundTint="@color/colorMainWhite"
             app:strokeColor="@color/colorMainBlue"
             android:textColor="@color/colorMainBlue"
+            android:textSize="12sp"
             android:text="Войти"
             android:fontFamily="@font/rubik_regular"/>
 
@@ -52,6 +53,7 @@
             android:layout_height="wrap_content"
             app:strokeWidth="2dp"
             app:cornerRadius="15dp"
+            android:textSize="12sp"
             android:backgroundTint="@color/colorMainBlue"
             app:strokeColor="@color/colorMainBlue"
             android:textColor="@color/colorMainWhite"
